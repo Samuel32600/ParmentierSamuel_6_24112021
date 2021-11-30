@@ -19,7 +19,18 @@ export default class NewBill {
     const file = this.document.querySelector(`input[data-testid="file"]`).files[0]
     const filePath = e.target.value.split(/\\/g)
     const fileName = filePath[filePath.length-1]
-    this.firestore
+    
+    //-------------------------
+    //-----Bug Hunt -Bills-----
+    //-------------------------
+
+    //type of format valid
+    const dataExtension = /(\.jpg|\.jpeg|\.png)$/i
+    //DOM btn Send
+    const btnSend = document.getElementById("btn-send-bill")
+    // condition for file.name
+    if (dataExtension.exec(file.name)){
+      this.firestore
       .storage
       .ref(`justificatifs/${fileName}`)
       .put(file)
@@ -28,7 +39,14 @@ export default class NewBill {
         this.fileUrl = url
         this.fileName = fileName
       })
+      btnSend.disabled = false
+      alert("merci, votre fichier est pris en compte")
+    } else{
+      btnSend.disabled = true
+      alert("erreur, merci de mettre votre fichier au format .jpg, .jpeg ou .png")
+    }
   }
+
   handleSubmit = e => {
     e.preventDefault()
     console.log('e.target.querySelector(`input[data-testid="datepicker"]`).value', e.target.querySelector(`input[data-testid="datepicker"]`).value)
