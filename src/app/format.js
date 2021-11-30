@@ -1,5 +1,6 @@
 export const formatDate = (dateStr) => {
-
+  
+//Bug report -Bils
   if (!dateStr) {
     return ''
   }

@@ -19,6 +19,8 @@ const row = (bill) => {
   }
 
 const rows = (data) => {
+  
+  //Bug report -Bils
   // console.log(data[0].date)
   if((data && data.length)){
     data.sort(function(a,b){
