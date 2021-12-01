@@ -31,5 +31,14 @@ describe("Given I am connected as an employee", () => {
       expect(screen.getAllByText("Loading...")).toBeTruthy();
     })
 
+    //-------------------------------
+    //-----test for Error Page-------
+    //-------------------------------
+    test("Then, it should render ErrorPage", () => {
+      const html = BillsUI({ error: true });
+      document.body.innerHTML = html;
+      expect(screen.getAllByText('Error')).toBeTruthy()
+    })
+
   })
 })
