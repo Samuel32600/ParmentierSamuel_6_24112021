@@ -42,3 +42,5 @@ describe("Given I am connected as an employee", () => {
 
   })
 })
+
+//-----test for handleClickIconEye-----
