@@ -15,7 +15,7 @@ export default class NewBill {
     this.fileName = null
     new Logout({ document, localStorage, onNavigate })
   }
-  
+
   handleChangeFile = e => {
     const file = this.document.querySelector(`input[data-testid="file"]`).files[0]
     const filePath = e.target.value.split(/\\/g)
@@ -31,17 +31,19 @@ export default class NewBill {
     const btnSend = document.getElementById("btn-send-bill")
     // condition for file.name
     if (dataExtension.exec(file.name)) {
-      this.firestore
-        .storage
-        .ref(`justificatifs/${fileName}`)
-        .put(file)
-        .then(snapshot => snapshot.ref.getDownloadURL())
-        .then(url => {
-          this.fileUrl = url
-          this.fileName = fileName
-        })
       btnSend.disabled = false
       alert("Merci, votre fichier est pris en compte")
+      if (this.firestore) {
+        this.firestore
+          .storage
+          .ref(`justificatifs/${fileName}`)
+          .put(file)
+          .then(snapshot => snapshot.ref.getDownloadURL())
+          .then(url => {
+            this.fileUrl = url
+            this.fileName = fileName
+          })
+      }
     } else {
       btnSend.disabled = true
       alert("Erreur, merci de choisir un fichier au format .jpg, .jpeg ou .png")
