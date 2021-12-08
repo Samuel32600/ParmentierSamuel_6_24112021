@@ -190,6 +190,9 @@ describe("Given I am connected as an employee", () => {
   })  
 })
 
+//-------------------------------------------
+// -----test d'intégration Post NEW Bill-----
+//-------------------------------------------
 describe("Given I am a user connected as Employee", () => {
   describe("When create a new bill", () => {
     test("add new bill from mock API POST", async () => {
@@ -203,7 +206,7 @@ describe("Given I am a user connected as Employee", () => {
         name: "test newBill",
         vat: "",
         fileName: "newBill",
-        date: "2021-09-07",
+        date: "2021-12-10",
         commentAdmin: "",
         commentary: "",
         type: "",
