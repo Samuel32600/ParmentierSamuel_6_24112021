@@ -14,6 +14,9 @@ import firebase from "../__mocks__/firebase"
 describe("Given I am connected as an employee", () => {
   describe("When I am on NewBill Page", () => {
 
+    //------------------------------------------
+    //-----test for mail icon highlighted-------
+    //------------------------------------------
     test("Then mail icon in vertical navbar should be highlighted", () => {
       Object.defineProperty(window, "localStorage", { value: localStorageMock })
       window.localStorage.setItem("user", JSON.stringify({
@@ -25,6 +28,9 @@ describe("Given I am connected as an employee", () => {
       expect(iconActive.classList.contains("active-icon")).toBeTruthy
     })
 
+    //-----------------------------
+    //-----test for the form-------
+    //-----------------------------
     test("Then I check all formdata was completed", () => {
       const html = NewBillUI()
       document.body.innerHTML = html
@@ -47,37 +53,37 @@ describe("Given I am connected as an employee", () => {
       const onNavigate = (pathname) => {
         document.body.innerHTML = ROUTES({ pathname })
       }
-      //test sur le type de dépense
+      //test type of spent
       const inputType = screen.getByTestId("expense-type")
       fireEvent.click(inputType, { target: { value: inputForm.expenseType, name: inputForm.expenseType, selectedIndex: 1 } })
       expect(inputType.value).toBe(inputForm.expenseType)
 
-      //test sur le nom de la dépense
+      //test for name of spent
       const inputName = screen.getByTestId("expense-name")
       fireEvent.click(inputName, { target: { value: inputForm.expenseName } })
       expect(inputName.value).toBe(inputForm.expenseName)
 
-      //test sur la date
+      //test for date
       const inputDate = screen.getByTestId("datepicker")
       fireEvent.click(inputDate, { target: { value: inputForm.datepicker } })
       expect(inputDate.value).toBe(inputForm.datepicker)
 
-      //test sur le montant
+      //test for price
       const inputAmount = screen.getByTestId("amount")
       fireEvent.click(inputAmount, { target: { value: inputForm.expenseAmount } })
       expect(inputAmount.value).toBe(inputForm.expenseAmount)
 
-      //test sur le montant de la TVA
+      //test price of TVA
       const inputTva = screen.getByTestId("vat")
       fireEvent.click(inputTva, { target: { value: inputForm.expenseTVA } })
       expect(inputTva.value).toBe(inputForm.expenseTVA)
 
-      //test sur le % de la TVA
+      //test % of TVA
       const inputPct = screen.getByTestId("pct")
       fireEvent.click(inputPct, { target: { value: inputForm.expensePCT } })
       expect(inputPct.value).toBe(inputForm.expensePCT)
 
-      //test sur le champ commentaire
+      //test comment field
       const inputCommentary = screen.getByTestId("commentary")
       fireEvent.click(inputCommentary, { target: { value: inputForm.expenseCommentary } })
       expect(inputCommentary.value).toBe(inputForm.expenseCommentary)
@@ -100,7 +106,9 @@ describe("Given I am connected as an employee", () => {
       expect(screen.getAllByText('Mes notes de frais')).toBeTruthy()
     })
 
-
+    //---------------------------------------------------
+    //-----test for good extension file + btn SEND-------
+    //---------------------------------------------------
     describe("When I download a file with a good extention", () => {
       test("the submit button is available", () => {
         const html = NewBillUI()
@@ -138,7 +146,9 @@ describe("Given I am connected as an employee", () => {
       })
     })
 
-
+    //---------------------------------------------------------------
+    //-----test for BAD extension file + btn SEND not clikable-------
+    //---------------------------------------------------------------
     describe("When I download a file with bad extention", () => {
       test("the submit button is not clikable ", () => {
         const html = NewBillUI()
