@@ -13,7 +13,7 @@ import firebase from "../__mocks__/firebase"
 
 describe("Given I am connected as an employee", () => {
   describe("When I am on NewBill Page", () => {
-
+    
     //------------------------------------------
     //-----test for mail icon highlighted-------
     //------------------------------------------

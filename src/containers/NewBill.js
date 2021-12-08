@@ -30,7 +30,6 @@ export default class NewBill {
     //DOM btn Send
     const btnSend = document.getElementById("btn-send-bill")
     // condition for file.name
-    
     if (dataExtension.exec(file.name)) {
       btnSend.disabled = false
       alert("Merci, votre fichier est pris en compte")
