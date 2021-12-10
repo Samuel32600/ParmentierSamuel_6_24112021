@@ -14,7 +14,7 @@ export const formatDate = (dateStr) => {
   const mo = new Intl.DateTimeFormat('fr', { month: 'numeric' }).format(date)
   const da = new Intl.DateTimeFormat('fr', { day: 'numeric' }).format(date)
   
-  return `${da}-${mo}-${ye}`
+  return `${ye}-${mo}-${da}`
 }
  
 export const formatStatus = (status) => {
